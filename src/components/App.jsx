@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
 import NavigationBar from './NavigationBar/NavigationBar';
 import './App.css';
+import MusicTable from './MusicTable/MusicTable';
+import axios from 'axios';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            songs: []
+         }
     }
+
+
+    componentDidMount(){
+        this.getAllSongs();
+        console.log(this.songs);
+    }
+
+
+    async getAllSongs(){
+        await axios.get(`http://www.devcodecampmusiclibrary.com/api/music`)
+        .then((res)=>{
+            console.log(res);
+            this.setState({songs: res.data});
+        })
+    }
+
+
     render() { 
         return (  
             <div className="container-fluid">
-                <NavigationBar/>
+                <NavigationBar songs={this.state.songs}/>
+                <MusicTable songs={this.state.songs}/>
             </div>
 
         );
