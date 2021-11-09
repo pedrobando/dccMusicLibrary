@@ -4,12 +4,19 @@ import './SearchBar.css'
 class SearchBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            search: ''
+         }
+    }
+    handleChange = (event) =>{
+        this.setState({
+            search: event.target.value
+        })
     }
     render() { 
         return ( 
-            <form className="d-flex">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={}/>
+            <form className="d-flex" onSubmit="">
+                <input className="form-control me-2" id="search" type="text" onChange={this.handleSearch} value={this.props.songs}/>
                 <button className="btn btn-outline-success" type="submit">Find</button>
             </form>
         )
@@ -17,24 +24,3 @@ class SearchBar extends Component {
 }
  
 export default SearchBar;
-
-
-
-handleChange = (event) =>{
-    this.setState({
-        [event.target.name]: event.target.value
-    })
-}
-handleSubmit  = (event) =>{
-    event.preventDefault();
-    this.props.createNewBook(this.state)
-}
-render() { 
-    return ( 
-        <form onSubmit={this.handleSubmit}>
-                <label>Book Name</label>
-                <input name="title" onChange={this.handleChange} value={this.state.title}/>
-                <label>Author</label>
-                <input name="author" onChange={this.handleChange} value={this.state.author}/>
-            <button class="btn btn-primary" type="submit">Create Book</button>
-        </form>

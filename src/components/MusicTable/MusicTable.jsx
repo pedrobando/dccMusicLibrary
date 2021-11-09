@@ -3,8 +3,10 @@ import './MusicTable.css'
 import Track from '../Track/Track';
 
 function MusicTable(props){
+
+
     return ( 
-        <table className="table">
+        <table className="table" data={props.songs}>
             <thead>
                 <tr>
                 <th scope="col">ID</th>
@@ -19,7 +21,9 @@ function MusicTable(props){
                 {props.songs.map((song) => <Track song={song}/>)}
             </tbody>
         </table>
-        );
+
+
+         );
 }
  
 export default MusicTable;
