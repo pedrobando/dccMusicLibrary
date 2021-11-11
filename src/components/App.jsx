@@ -13,6 +13,7 @@ class App extends Component {
     }
 
 
+
     componentDidMount(){
         this.getAllSongs();
         console.log(this.songs);
@@ -20,7 +21,7 @@ class App extends Component {
 
 
     async getAllSongs(){
-        await axios.get(`http://www.devcodecampmusiclibrary.com/api/music`)
+        await axios.get(`http://localhost:3001/api/music`)
         .then((res)=>{
             console.log(res);
             this.setState({songs: res.data});
