@@ -8,7 +8,7 @@ class SearchBar extends Component {
             search: ''
          }
     }
-    handleChange = (event) =>{
+    handleSearch = (event) =>{
         this.setState({
             search: event.target.value
         })
@@ -16,7 +16,7 @@ class SearchBar extends Component {
     render() { 
         return ( 
             <form className="d-flex" onSubmit="">
-                <input className="form-control me-2" id="search" type="text" onChange={this.handleSearch} value={this.props.songs}/>
+                <input className="form-control me-2" id="search" type="text" onChange={this.handleSearch} value={this.state.search}/>
                 <button className="btn btn-outline-success" type="submit">Find</button>
             </form>
         )
