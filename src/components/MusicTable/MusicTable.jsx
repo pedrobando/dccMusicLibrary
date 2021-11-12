@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './MusicTable.css'
 import Track from '../Track/Track';
+import axios from "axios";
+import EditSong from '../EditSong/EditSong';
 
 class MusicTable extends Component {
     constructor(props) {
@@ -9,7 +11,7 @@ class MusicTable extends Component {
             
          }
     }
-
+    
     render() { 
         return ( 
             <table className="table" data={this.props.songs}>
@@ -21,11 +23,13 @@ class MusicTable extends Component {
                     <th scope="col">Artist</th>
                     <th scope="col">Genre</th>
                     <th scope="col">ReleaseDate</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col">Actions</th>
+                    <th><EditSong/></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.songs.map((song) => <Track song={song}/>)}
+                    {this.props.songs.map((song, index) => <Track song={song} deleteSong={this.props.deleteSong} editSong={this.props.editSong} key={index}/>)}
+
                 </tbody>
             </table>
          );
